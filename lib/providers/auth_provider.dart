@@ -60,6 +60,7 @@ class AuthProvider with ChangeNotifier {
     required String email,
     required String password,
     required String title,
+    required String avatar
   }) async {
     try {
       final response = await _authService.register(
@@ -67,6 +68,7 @@ class AuthProvider with ChangeNotifier {
         email: email,
         password: password,
         title: title,
+        avatar: avatar,
       );
       _user = response['user'];
       _token = response['token'];

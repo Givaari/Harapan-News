@@ -10,18 +10,16 @@ class AuthService {
     required String email,
     required String password,
     required String title,
+    required String avatar,
   }) async {
     final uri = Uri.parse('${ApiConfig.baseUrl}/auth/register');
-
-    final avatarUrl =
-        'https://ui-avatars.com/api/?name=${Uri.encodeComponent(name)}&background=random';
 
     final body = jsonEncode({
       'name': name,
       'email': email,
       'password': password,
-      'title': title.isNotEmpty ? title : 'News Enthusiast',
-      'avatar': avatarUrl,
+      'title': title,
+      'avatar': avatar,
     });
 
     // --- KODE DEBUGGING DIMULAI ---

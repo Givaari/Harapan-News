@@ -16,6 +16,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _titleController = TextEditingController();
+  final _avatarController = TextEditingController();
 
   bool _loading = false;
   bool _isPasswordVisible = false;
@@ -26,6 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _titleController.dispose();
+    _avatarController.dispose();
     super.dispose();
   }
 
@@ -49,6 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
         title: _titleController.text.trim(),
+        avatar: _avatarController.text.trim(),
       );
 
       print("[RegisterScreen] Proses register di provider berhasil.");
@@ -134,6 +137,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             validator:
                                 (v) =>
                                     v!.isEmpty ? 'Jabatan wajib diisi' : null,
+                          ),
+                          const SizedBox(height: 20),
+                          _buildTextField(
+                            controller: _avatarController,
+                            labelText: 'Avatar',
+                            prefixIcon: Icons.work_outline,
+                            validator:
+                                (v) =>
+                                    v!.isEmpty ? 'Avatar Wajib disi' : null,
                           ),
                           const SizedBox(height: 20),
                           _buildTextField(
